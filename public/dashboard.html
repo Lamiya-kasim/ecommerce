@@ -4,9 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+        .navbar {
+            background: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        .navbar .nav-links a:hover {
+            background: #575757;
+            border-radius: 5px;
+        }
+        .user-account {
+            display: flex;
+            gap: 10px;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .product img {
+            width: 100%;
+            height: 150px;
+            border-radius: 5px;
+        }
+        .add-to-cart {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .add-to-cart:hover {
+            background: #218838;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Dashboard</h1>
-    <p>Here we will show the invoice form and details...</p>
+    <!-- Navigation Menu -->
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="dashboard.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+        </div>
+        <div class="user-account">
+            <a href="orders.html">View Orders</a>
+            <a href="#" id="logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Welcome to Your E-commerce Dashboard</h1>
+        <h2>Available Products</h2>
+        <div class="products" id="products-container">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <script>
+        let products = [
+            {id: 1, name: "Apple", price: 2.99, img: "images/apple.jpg"},
+            {id: 2, name: "Banana", price: 1.49, img: "images/banana.jpg"},
+            {id: 3, name: "Milk", price: 3.49, img: "images/milk.jpg"},
+            {id: 4, name: "Eggs", price: 4.99, img: "images/eggs.jpg"},
+            {id: 5, name: "Bread", price: 2.49, img: "images/bread.jpg"},
+            {id: 6, name: "Tomato", price: 1.89, img: "images/tomato.jpg"},
+            {id: 7, name: "Potato", price: 0.99, img: "images/potato.jpg"},
+            {id: 8, name: "Cheese", price: 5.49, img: "images/cheese.jpg"},
+            {id: 9, name: "Chicken", price: 9.99, img: "images/chicken.jpg"},
+            {id: 10, name: "Rice", price: 6.49, img: "images/rice.jpg"}
+        ];
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart-count").textContent = cart.length;
+        }
+
+        function addToCart(id) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let product = products.find(p => p.id === id);
+    
+            let existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                product.quantity = 1;
+                cart.push(product);
+            }
+    
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(product.name + " added to cart!");
+            updateCartCount();
+        }
+
+        function displayProducts() {
+            let container = document.getElementById("products-container");
+            container.innerHTML = products.map(p => `
+                <div class="product">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p>Price: $${p.price}</p>
+                    <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        displayProducts();
+        updateCartCount();
+    </script>
 </body>
 </html>
+
+
+
