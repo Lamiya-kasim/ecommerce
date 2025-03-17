@@ -60,17 +60,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (checkoutButton) {
         checkoutButton.addEventListener("click", function () {
-            console.log("Checkout button clicked! ✅");
+            console.log("✅ Checkout button clicked!");
 
             if (cart.length === 0) {
                 alert("Your cart is empty!");
                 return;
             }
 
-            let customerName = prompt("Enter your name:").trim();
-            let customerEmail = prompt("Enter your email:").trim();
-            let customerAddress = prompt("Enter your address:").trim();
-            let paymentMethod = prompt("Enter payment method (Cash/Card):").trim().toLowerCase();
+            let customerName = prompt("Enter your name:")?.trim();
+            let customerEmail = prompt("Enter your email:")?.trim();
+            let customerAddress = prompt("Enter your address:")?.trim();
+            let paymentMethod = prompt("Enter payment method (Cash/Card):")?.trim().toLowerCase();
 
             if (!customerName || !customerEmail || !customerAddress || !paymentMethod) {
                 alert("All fields are required!");
@@ -87,9 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            let totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            let totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); // Fixed totalPrice calculation
+            console.log("🛒 Cart Total Price:", totalPrice);
 
-            fetch("http://127.0.0.1:8000/api/orders", {  // ✅ Correct API URL
+            let orderItems = cart.map(item => ({
+                product_id: item.id,  // Ensure backend expects this ID field
+                quantity: item.quantity
+            }));
+            
+            console.log("📡 Sending Order Data:", { customerName, customerEmail, customerAddress, paymentMethod, orderItems, totalPrice });
+
+            fetch("http://127.0.0.1:8000/api/orders", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -97,30 +105,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     customer_email: customerEmail,
                     customer_address: customerAddress,
                     payment_method: paymentMethod,
-                    items: cart,
+                    items: orderItems,
                     total_price: totalPrice
                 })
             })
             .then(response => response.json())
             .then(data => {
-                console.log("Checkout response:", data);
+                console.log("📩 Checkout API Response:", data);
 
                 if (data.message === "Order placed successfully!") {
-                    alert("Order placed successfully!");
+                    alert("🎉 Order placed successfully!");
                     localStorage.removeItem("cart");
                     updateCartUI();
                     window.location.href = "vieworders.html";
                 } else {
-                    alert("Checkout failed: " + (data.message || "Unknown error"));
+                    alert("⚠️ Checkout failed: " + (data.message || "Unknown error"));
                 }
             })
             .catch(error => {
-                console.error("Checkout API Error:", error);
-                alert("Error processing your order. Please try again.");
+                console.error("❌ Checkout API Error:", error);
+                alert("🚨 Error processing your order. Please try again.");
             });
         });
     } else {
-        console.error("Checkout button not found! ❌ Check your HTML.");
+        console.error("❌ Checkout button not found! Check your HTML.");
     }
 });
 
