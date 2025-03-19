@@ -72,6 +72,16 @@
                     <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
                     <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="#cart">Cart</a></li>
+                    <!-- User Button with Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#view-orders">View Orders</a></li>
+                            <li><a class="dropdown-item" href="#logout">Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -116,98 +126,155 @@
     <div id="products" class="products">
         <div class="product-card">
             <img src="images/product1.jpg" alt="Product 1">
-            <p>Product 1</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>Apple</p>
+            <button class="add-to-cart" data-id="1" data-name="Apple" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product2.png" alt="Product 2">
-            <p>Product 2</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>Banana</p>
+            <button class="add-to-cart" data-id="1" data-name="Banana" data-price="5.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product3.png" alt="Product 3">
-            <p>Product 3</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>chicken</p>
+            <button class="add-to-cart" data-id="1" data-name="chicken" data-price="7.0">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product4.jpg" alt="Product 4">
-            <p>Product 4</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>margarta</p>
+            <button class="add-to-cart" data-id="1" data-name="margartia" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product5.jpg" alt="Product 5">
-            <p>Product 5</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>lamp</p>
+            <button class="add-to-cart" data-id="1" data-name="lamp" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product6.jpg" alt="Product 6">
-            <p>Product 6</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>grapes</p>
+            <button class="add-to-cart" data-id="1" data-name="Apple" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product7.jpg" alt="Product 7">
-            <p>Product 7</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>Milk</p>
+            <button class="add-to-cart" data-id="1" data-name="milk" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product8.jpg" alt="Product 8">
-            <p>Product 8</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>pomogrante</p>
+            <button class="add-to-cart" data-id="1" data-name="pomogrante" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product9.jpg" alt="Product 9">
-            <p>Product 9</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>potato</p>
+            <button class="add-to-cart" data-id="1" data-name="potat0" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product10.jpg" alt="Product 10">
-            <p>Product 10</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>tomato</p>
+            <button class="add-to-cart" data-id="1" data-name="Apple" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product11.jpg" alt="Product 11">
-            <p>Product 11</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>apricot</p>
+            <button class="add-to-cart" data-id="1" data-name="apricot" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product12.jpg" alt="Product 12">
-            <p>Product 12</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>kale</p>
+            <button class="add-to-cart" data-id="1" data-name="kale" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product13.jpg" alt="Product 13">
-            <p>Product 13</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>brocooli</p>
+            <button class="add-to-cart" data-id="1" data-name="broccoli" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product14.jpg" alt="Product 14">
-            <p>Product 14</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>sausage</p>
+            <button class="add-to-cart" data-id="1" data-name="sausage" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product15.jpg" alt="Product 15">
-            <p>Product 15</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>mocktail</p>
+            <button class="add-to-cart" data-id="1" data-name="mocktail" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product16.jpg" alt="Product 16">
-            <p>Product 16</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>lemon</p>
+            <button class="add-to-cart" data-id="1" data-name="Apple" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product17.png" alt="Product 17">
-            <p>Product 17</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>onion</p>
+            <button class="add-to-cart" data-id="1" data-name="oninon" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
         <div class="product-card">
             <img src="images/product18.jpg" alt="Product 18">
-            <p>Product 18</p>
-            <button class="btn btn-success">Add to Cart</button>
+            <p>carrots</p>
+            <button class="add-to-cart" data-id="1" data-name="carrots" data-price="2.99">
+                Add to Cart
+            </button>
+            
         </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cart.js"></script>
 </body>
+
+
 </html>
     <!-- Footer Section -->
     <footer class="bg-green text-white text-center py-4 mt-4" style="background-color: green;">
